@@ -79,7 +79,8 @@ export default function Form() {
         <div className="flex items-center mt-16 md:mt-24 text-lg rounded-lg flex-col w-62">
           {actualRate == 0 ? (
             <span className="text-center italic mx-2">
-              Enter your information below to recieve an estimated car loan!
+              Enter your information below to recieve an estimated monthly car
+              insurance quote!
             </span>
           ) : (
             <>
@@ -95,7 +96,7 @@ export default function Form() {
                   src={question}
                   className="w-12 p-2 ml-4 questionIcon peer hover:bg-slate-100 rounded-[24px]"
                 />
-                <span className="questionPopUp peer-hover:visible invisible absolute md:mt-32 mt-24 bg-slate-100 p-2 rounded-lg text-center">
+                <span className="questionPopUp peer-hover:visible invisible absolute md:mt-32 mt-24 mx-4 bg-slate-100 p-2 rounded-lg text-center">
                   This is only an estimate of what your insurance quote&nbsp;
                   <b>MIGHT</b> be. Actual insurance quotes are made with much
                   more complex algorithms then the one used here.
@@ -108,7 +109,7 @@ export default function Form() {
 
       <div className="mt-16  flex justify-center items-start">
         <form
-          className="form pb-6 p-4 shadow-xl text-black mb-6 mx-4 h-[50vh] overflow-y-scroll md:h-full md:overflow-y-auto"
+          className="form pb-6 p-4 shadow-xl text-black mb-6 mx-4 h-[45vh] overflow-y-scroll md:h-full md:overflow-y-auto"
           onSubmit={(e) => {
             e.preventDefault();
             if (
@@ -201,7 +202,7 @@ export default function Form() {
             ""
           ) : (
             <>
-              <div className="flex my-8 justify-center w-full">
+              <div className="flex my-8 justify-center w-full md:block hidden">
                 <button
                   type="submit"
                   className="submitBtn w-48 h-12 text-[#ffffffa4] hoverFX text-black hover:text-white"
@@ -390,7 +391,7 @@ export default function Form() {
                       src={question}
                       className="w-12 p-2 ml-4 questionIcon peer hover:bg-slate-100 rounded-[24px]"
                     />
-                    <span className="questionPopUp peer-hover:visible invisible absolute mt-32 bg-slate-100 p-2 rounded-lg text-center">
+                    <span className="questionPopUp mx-4 peer-hover:visible invisible absolute mt-32 bg-slate-100 p-2 rounded-lg text-center">
                       This is only an estimate of what your insurance
                       quote&nbsp;
                       <b>MIGHT</b> be. Actual insurance quotes are made with
