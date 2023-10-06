@@ -21,6 +21,7 @@ const setupServer = async () => {
 
   const data = await response.text();
   console.log("before", data);
+  console.log(process.env.CARAPI_TOKEN, process.env.CARAPI_SECRET);
 
   app.use((req, res) => {
     fetch(`https://carapi.app/api${req.path}`, {
