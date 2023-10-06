@@ -26,7 +26,7 @@ export default function Form() {
   let formData = {};
 
   useEffect(() => {
-    fetch("http://localhost:3000/makes")
+    fetch("https://getmycarinsurancequote.onrender.com/makes")
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -64,7 +64,9 @@ export default function Form() {
 
   const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/years?make=${selectedMake}`)
+    fetch(
+      `https://getmycarinsurancequote.onrender.com/years?make=${selectedMake}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -84,7 +86,9 @@ export default function Form() {
             </span>
           ) : (
             <>
-              <span className="mb-6 ">YOUR ESTIMATED RATE IS:</span>
+              <span className="mb-6 ">
+                YOUR ESTIMATED CAR INSURANCE RATE IS:
+              </span>
               <div className="flex md:flex-row flex-col items-center">
                 <SlotCounter
                   value={`$${(actualRate / 12).toFixed(2)}/month`}
@@ -202,7 +206,7 @@ export default function Form() {
             ""
           ) : (
             <>
-              <div className="flex my-8 justify-center w-full md:block hidden">
+              <div className=" my-8 justify-center w-full md:flex hidden">
                 <button
                   type="submit"
                   className="submitBtn w-48 h-12 text-[#ffffffa4] hoverFX text-black hover:text-white"
@@ -220,7 +224,7 @@ export default function Form() {
               <select
                 required
                 name="carMake"
-                className="block bg-white border border-custom-green rounded-md shadow-sm pl-3 pr-10 py-2 text-base cursor-default focus:outline-none sm:text-sm w-full h-12 hover:cursor-pointer"
+                className="block bg-white border carMake border-custom-green rounded-md shadow-sm pl-3 pr-10 py-2 text-base cursor-default focus:outline-none sm:text-sm w-full h-12 hover:cursor-pointer"
                 onChange={handleMakeChange}
               >
                 <option disabled selected value="">
@@ -231,25 +235,32 @@ export default function Form() {
                 ))}
               </select>
             </div>
-            <div className="mt-6">
-              <label className="text-opacity-100 ">Model Type:</label>
-            </div>
-            <div className="w-full dropdownMenu">
-              <select
-                required
-                name="carModel"
-                placeholder="Select Your Model"
-                className="block bg-white border border-custom-green rounded-md shadow-sm pl-3 pr-10 py-2 text-base cursor-default focus:outline-none sm:text-sm w-full h-12 hover:cursor-pointer"
-                onChange={handleModelChange}
-              >
-                <option disabled selected value="">
-                  Select Model
-                </option>
-                {models.map((model) => (
-                  <option key={model}>{model}</option>
-                ))}
-              </select>
-            </div>
+            {selectedMake ? (
+              <>
+                <div className="mt-6">
+                  <label className="text-opacity-100 ">Model Type:</label>
+                </div>
+                <div className="w-full dropdownMenu">
+                  <select
+                    required
+                    name="carModel"
+                    placeholder="Select Your Model"
+                    className="block bg-white border border-custom-green rounded-md shadow-sm pl-3 pr-10 py-2 text-base cursor-default focus:outline-none sm:text-sm w-full h-12 hover:cursor-pointer"
+                    onChange={handleModelChange}
+                  >
+                    <option disabled selected value="">
+                      Select Model
+                    </option>
+                    {models.map((model) => (
+                      <option key={model}>{model}</option>
+                    ))}
+                  </select>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+
             <div className="mt-6">
               <label className="text-opacity-100 ">Year:</label>
             </div>
