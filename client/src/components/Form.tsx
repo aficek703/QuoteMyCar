@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SlotCounter from "react-slot-counter";
+
 import question from "../assets/question.png";
 
 interface Make {

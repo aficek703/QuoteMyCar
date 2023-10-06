@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "dev-public": "vite --host",
-    "build": "npm ci && tsc client/src/*.tsx && vite build",
+    "build": "echo $PWD && npm ci && tsc ./src/*.ts ./src/*.tsx --outDir 'dist' --esModuleInterop true --jsx 'react-jsx' --downlevelIteration true --lib 'es5,es6,ES2020,DOM,DOM.Iterable'",
+    "clean": "tsc --build './tsconfig.json' --clean",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -17,7 +18,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-slot-counter": "^1.14.0",
-    "vite-express": "^0.10.0"
+    "vite-express": "^0.10.0",
+    "@types/react": "^18.2.15"
   },
   "devDependencies": {
     "@types/express": "^4.17.18",
