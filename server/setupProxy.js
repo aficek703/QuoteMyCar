@@ -16,6 +16,7 @@ const response = await fetch(`https://carapi.app/api/auth/login`, {
     }),
 });
 const data = await response.text();
+console.log("before", data);
 app.use((req, res) => {
     fetch(`https://carapi.app/api${req.path}`, {
         headers: {
@@ -28,6 +29,7 @@ app.use((req, res) => {
         .then((data) => res.json(data))
         .catch((error) => console.error("Error:", error));
 });
+console.log("after", data);
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
