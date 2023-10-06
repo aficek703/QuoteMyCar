@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "dev-public": "vite --host",
-    "build": "echo $PWD && npm ci && tsc ./src/*.ts ./src/*.tsx --outDir 'dist' --esModuleInterop true --jsx 'react-jsx' --downlevelIteration true --lib 'es5,es6,ES2020,DOM,DOM.Iterable'",
+    "build": "tsc && vite build",
     "clean": "tsc --build './tsconfig.json' --clean",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
