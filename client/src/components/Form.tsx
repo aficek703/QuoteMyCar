@@ -40,7 +40,6 @@ export default function Form() {
     fetch("https://getmycarinsurancequote.onrender.com/makes")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
         setMakes(data.data);
       })
       .catch((error) => console.error("Error:", error));
@@ -80,12 +79,10 @@ export default function Form() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setYears(data);
       })
       .catch((error) => console.error("Error:", error));
   };
-  console.log(models);
   return (
     <>
       <div className="flex w-full justify-center">
@@ -210,7 +207,6 @@ export default function Form() {
             baseRate *= vehicleTypeFactor;
             setActualRate(baseRate);
 
-            console.log(`Rate: $${(baseRate / 12).toFixed(2)}`);
             sessionStorage.setItem("formDataSession", JSON.stringify(formData));
             window.scrollTo(0, 250);
           }}
