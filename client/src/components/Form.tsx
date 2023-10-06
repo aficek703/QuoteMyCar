@@ -15,6 +15,17 @@ interface Model {
   type: string;
 }
 
+interface FormData {
+  carYear: string;
+  carMake: string;
+  carModel: string;
+  driverAge: string;
+  mileage: string;
+  driverAccident: string;
+  creditScore: string;
+  locationRisk: string;
+}
+
 export default function Form() {
   const [makes, setMakes] = useState<Make[]>([]);
   const [models, setModels] = useState<string[]>([]);
@@ -23,7 +34,7 @@ export default function Form() {
 
   let baseRate = 1000;
   const [actualRate, setActualRate] = useState<number>(0);
-  let formData = {};
+  let formData: FormData = {} as FormData;
 
   useEffect(() => {
     fetch("https://getmycarinsurancequote.onrender.com/makes")
@@ -122,7 +133,9 @@ export default function Form() {
             ) {
               return;
             }
-            formData = Object.fromEntries([...new FormData(e.target)]);
+            formData = Object.fromEntries([
+              ...new FormData(e.target as HTMLFormElement),
+            ]) as any as FormData;
             const carAge =
               new Date().getFullYear() - parseInt(formData.carYear);
             const carMakes = [
@@ -185,7 +198,7 @@ export default function Form() {
                 ? 1.25
                 : formData.carModel === "Wagon" || "Wagon, Sedan, Hatchback"
                 ? 1
-                : "";
+                : 1;
 
             baseRate *= ageFactor;
             baseRate *= vehicleAgeFactor;
