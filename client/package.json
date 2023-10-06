@@ -7,12 +7,11 @@
   "scripts": {
     "dev": "vite",
     "dev-public": "vite --host",
-    "build": "tsc && vite build",
+    "build": "npm ci && tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
-    "express": "^4.18.2",
     "flowbite": "^1.8.1",
     "node-fetch": "^2.6.1",
     "react": "^18.2.0",
